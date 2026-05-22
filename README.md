@@ -1,0 +1,56 @@
+# RAG Document Chatbot
+
+A production-ready AI application that lets users upload PDF documents and ask questions about them using Retrieval-Augmented Generation (RAG).
+
+[Live Demo](https://huggingface.co/spaces/olsionh/rag-chatbot)
+
+## How It Works
+
+1. User uploads one or multiple PDF documents
+2. Documents are split into chunks and converted into vector embeddings
+3. User asks a question in natural language
+4. The system retrieves the most relevant chunks using semantic search
+5. An LLM generates an answer grounded in the retrieved context
+6. The source page and filename are shown for every answer
+
+## Features
+
+- Multiple PDF upload and indexing
+- Conversation memory across follow-up questions
+- Source citations with filename and page number
+- Dockerized for portable deployment
+- Deployed on Hugging Face Spaces
+
+## Tech Stack
+
+- Framework: LangChain
+- LLM: OpenAI GPT-4o-mini
+- Embeddings: OpenAI text-embedding-ada-002
+- Vector Store: ChromaDB
+- UI: Streamlit
+- Containerization: Docker
+- Deployment: Hugging Face Spaces
+
+## Run Locally
+
+Clone the repo and install dependencies:
+
+    git clone https://github.com/olsionh/rag-chatbot.git
+    cd rag-chatbot
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    streamlit run app.py
+
+## Limitations
+
+- Vague follow-ups may not retrieve relevant context
+- Large PDFs may take longer to index
+- Conversation history resets when a new document is uploaded
+
+## Future Improvements
+
+- Add support for .txt and .docx files
+- Implement hybrid search
+- Add LangSmith tracing for observability
+- Support local LLMs via Ollama
